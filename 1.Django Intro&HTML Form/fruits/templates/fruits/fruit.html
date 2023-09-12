@@ -9,11 +9,7 @@
     {% for item in fruit_list %}
         {% if item not in hate %}
             {% if item|length >= 2 %}
-                {% if item|length >= 4 %}
-                    <p>{{ item }}</p>
-                {% else %}
-                    <p>{{ item }}</p>
-                {% endif %}
+                <p>{{ item|truncatechars:3 }}</p>
             {% endif %}
         {% endif %}
     {% endfor %}
