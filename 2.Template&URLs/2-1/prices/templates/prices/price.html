@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    {% if  {{item}} in product_price %}
+    {% if item in product_price %}
         <p> {{item}} {{num}}개의 가격은 {{total}}원 입니다. </p>
     {% else %}
         <p> {{item}}은/는 없어용 </p>
