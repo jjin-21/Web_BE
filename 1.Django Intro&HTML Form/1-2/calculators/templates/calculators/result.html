@@ -7,7 +7,13 @@
 </head>
 <body>
     <h1>계산결과</h1>
-    {{num1}}
-    {{num2}}
+    <p>{{num1}} + {{num2}} = {{num1|add:num2}}</p>
+    <p>{{num1}} - {{num2}} = {{diff}}</p>
+    <p>{{num1}} * {{num2}} = {{mul}}</p>
+    {% if div %}
+        <p>{{num1}} / {{num2}} = {{div}}</p>
+    {% else %}
+        <p>계산할 수 없습니다.</p>
+    {% endif %}
 </body>
 </html>

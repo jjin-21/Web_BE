@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href=" {%url 'articles:index'%} ">articles의 index로!</a>
+    <a href=" {%url 'pages:index'%} ">pages의 index로!</a>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>
