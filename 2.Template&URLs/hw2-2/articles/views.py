@@ -4,7 +4,12 @@ from django.shortcuts import render
 def catch(request):
     return render(request, 'articles/catch.html')
 
-def introduce(request):
-    return
-    return render(request)
+def introduce(request, name, age):
+    # name = request.GET.get('name')
+    # age = request.GET.get('age')
+    context = {
+        'name' : name,
+        'age' : age,
+    }
+    return render(request, 'articles/introduce.html', context)
     

@@ -6,11 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/introduce/" method="GET">
-		<label>던지자!:
-			<input type="text" name="message" />
-            <input type="text" name="message" />
-		</label>
+    <form action="/articles/introduce/" method="GET">
+		<label>이름:</label>
+		<input type="text" name="name" id='name'/>
+
+        <label>나이:</label>
+        <input type="text" name="age" id='age'/>
+		
 		<input type="submit" value="submit"/>
 </form>
 </body>
