@@ -10,3 +10,6 @@ def index(request):
 
 def new(request):
     return render(request, 'articles/new.html')
+
+def create(request):
+    pass
