@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>식당 생성 페이지</h1>
+{% extends "restaurants/base.html" %}
+
+{% block content %}
+<h1>식당 생성 페이지</h1>
     <form action="{% url "restaurants:create" %}" method='GET'>
         <div>
             <label for="name">식당 이름</label>
@@ -30,5 +25,5 @@
         <input type="submit" value="CREATE">
     </form>
     <a href= '{% url "restaurants:restaurants" %}'>BACK</a>
-</body>
-</html>
+{% endblock content %}
+
