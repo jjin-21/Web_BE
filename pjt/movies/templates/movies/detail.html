@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .update-delete {
+        display: flex;
+        gap: 5px;
+    }
+</style>
+
+
+<h1>DETAIL PAGE</h1>
+<h3>{{ movie.title }}</h3>
+<p>{{ movie.description }}</p>
+
+<hr>
+<div class='update-delete'>
+    <a class="btn btn-secondary" href="{% url "movies:update" movie.pk%}" role="button">UPDATE</a>
+    <form action="{% url "movies:delete" movie.pk %}" method='POST'>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger" onclick="return confirm('정말로 삭제하시겠습니까?')">DELETE</button>
+    </form>
+</div>
+
+<hr>
+<a class="btn btn-primary" href="{% url "movies:index" %}" role="button">BACK</a>
+{% endblock content %}
