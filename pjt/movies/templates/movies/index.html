@@ -11,15 +11,10 @@
         flex: 0 0 calc(50% - 20px); /* 각 아이템의 너비를 50%로 설정하고 간격을 고려 */
         margin: 10px; /* 아이템 간격 설정 */
     }
-    {% comment %} .flex-item {
-        flex: 1; /* 아이템의 너비를 균등하게 설정 */
-        margin: 10px; /* 아이템 간격 설정 */
-    } {% endcomment %}
 </style>
 
 
 <h1>INDEX PAGE</h1>
-<a href="{% url "movies:create" %}">영화 추가</a>
 <hr>
 <div class='flex-container'>
     {% for movie in movies %}
@@ -34,5 +29,4 @@
     </div>
     {% endfor %}
 </div>
-
 {% endblock content %}
