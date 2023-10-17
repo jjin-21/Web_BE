@@ -10,18 +10,19 @@ def restaurants(request):
     }
     return render(request, 'restaurants/restaurants.html', context)
 
-def new(request):
-    return render(request, 'restaurants/new.html')
 
 def create(request):
-    name = request.GET.get('name')
-    description = request.GET.get('description')
-    address = request.GET.get('address')
-    phone_number = request.GET.get('phone_number')
-    restaurant = Restaurant(name=name, description=description, 
-                            address=address, phone_number=phone_number)
-    restaurant.save()
-    return render(request, 'restaurants/create.html')
+    if request.method == 'POST':
+        form = RestaurantForm(request.POST)
+        if form.is_valid():
+            form.save()
+            redirect('restaurants:detail')
+    else:
+        form = RestaurantForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'restaurants/create.html', context)
 
 
 def delete(request, pk):
@@ -38,7 +39,7 @@ def detail(request, pk):
     return render(request, 'restaurants/detail.html', context)
 
 
-def edit(request, pk):
+def update(request, pk):
     restaurant = Restaurant.objects.get(pk=pk)
     if request.method == 'POST':
         form = RestaurantForm(request.POST, instance=restaurant)
@@ -51,5 +52,5 @@ def edit(request, pk):
         'restaurant': restaurant,
         'form': form,
     }
-    return render(request, 'restaurants/edit.html', context)
+    return render(request, 'restaurants/update.html', context)
 

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>식당 생성 페이지</h1>
+    <form action="{% url "restaurants:create" %}" method='POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class='btn btn-primary' type="submit">CREATE</button>
+    </form>
+    <a href= '{% url "restaurants:restaurants" %}'>BACK</a>
+{% endblock content %}
+

@@ -2,7 +2,13 @@
 
 {% block content %}
 <h1>식당 수정 페이지</h1>
-<form action="{% url "restaurants:edit" restaurant.pk %}" method='GET'>
+<form action="{% url "restaurants:edit" restaurant.pk %}" method='POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="UPDATE">
+</form>
+
+{% comment %} <form action="{% url "restaurants:edit" restaurant.pk %}" method='GET'>
     {% csrf_token %}
     <div>
         <label for="name">식당 이름</label>
@@ -24,5 +30,5 @@
         <textarea name="phone_number" id="phone_number" cols="30" rows="10" value='{{restaurant.phone_number}}'></textarea>
     </div>
     <input type="submit" value="UPDATE">
-</form>
+</form> {% endcomment %}
 {% endblock content %}

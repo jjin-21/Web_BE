@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .info {
+        margin-top:7px;
+    }
+</style>
+<h1>맛집 상세 정보</h1>
+<div>
+    <div class='info'>식당 번호 : {{ restaurant.pk }} </div>
+    <div class='info'>식당 이름 : {{ restaurant.name }} </div>
+    <div class='info'>식당 설명 : {{ restaurant.description }} </div>
+    <div class='info'>식당 위치 : {{ restaurant.address }} </div>
+    <div class='info'>전화 번호 : {{ restaurant.phone_number }} </div>
+</div>
+<hr>
+
+<a href="{% url "restaurants:update" restaurant.pk %}">[UPDATE]</a>
+<form action="{% url "restaurants:delete" restaurant.pk %}">
+    {% csrf_token %}
+    <button class='btn btn-danger' type="submit">DELETE</button>
+</form>
+<hr>
+<a href="{% url "restaurants:restaurants" %}">[BACK]</a>
+{% endblock content %}
