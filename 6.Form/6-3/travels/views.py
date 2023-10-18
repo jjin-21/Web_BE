@@ -24,6 +24,7 @@ def create(request):
     }
     return render(request, 'travels/create.html', context)
 
+
 from django.http import Http404
 def detail(request, pk):
     try:
