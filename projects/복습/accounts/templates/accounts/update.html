@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>UPDATE</h1>
+<form action="{% url "accounts:update" %}" method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class='btn btn-primary' type="submit">UPDATE</button>
+</form>
+<hr>
+<a class='btn btn-primary' href="{% url "change_password" user.pk %}">비밀번호 변경</a>
+</form>
+<form action="{% url "accounts:delete" %}" method='POST'>
+    {% csrf_token %}
+    <button class='btn btn-danger' type="submit" onclick="return confirm('정말로 삭제하시겠습니까?')">DELETE</button>
+</form>
+<hr>
+<a href="{% url "boards:index" %}">[BACK]</a>
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> {{person.nickname}} 님의 프로필 </h1>
+<hr>
+<div>
+    <h2>
+        <a href="{% url "accounts:followings" person.nickname %}">팔로잉</a> : {{person.followings.all|length}} 
+        / <a href="{% url "accounts:followers" person.nickname %}">팔로워</a> : {{person.followers.all|length}}
+    </h2>
+    {% if request.user != person %}
+        <div>
+            <form action="{% url "accounts:follow" person.pk %}" method='POST'>
+                {% csrf_token %}
+                {% if request.user in person.followers.all %}
+                    <input type="submit" value="Unfollow">
+                {% else %}
+                    <input type="submit" value="Follow">
+                {% endif %}
+            </form>
+        </div>
+    {% endif %}
+</div>
+<hr>
+<h2> {{person.nickname}}이 작성한 게시글</h2>
+<ul>
+    {% for board in person.board_set.all %}
+        <li>
+            <a href="{% url "boards:detail" board.pk %}">{{board.title}}</a>
+        </li>
+    {% endfor %}
+</ul>
+<hr>
+
+<h2> {{person.nickname}}이 작성한 댓글 </h2>
+<ul>
+    {% for comment in person.comment_set.all %}
+        <li>{{comment.content}}</li>
+    {% endfor %}
+</ul>
+<hr>
+
+<h2> {{person.nickname}}이 "좋아요"한 게시글</h2>
+<ul>
+    <p>{{person.like_boards.all|length}}개</p>
+    {% for like in person.like_boards.all %}
+        <li>{{like.title}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

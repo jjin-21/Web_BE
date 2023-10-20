@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{person.nickname}} 님을 팔로우 하는 유저</h1>
+<hr>
+<ol>
+    {% for follower in person.followers.all %}
+        <li>
+            <a href="{% url "accounts:profile" follower.nickname %}">{{follower.nickname}}</a>
+        </li>
+    {% endfor %}
+</ol>
+{% endblock content %}
