@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- create.html -->
 
 {% extends 'base.html' %}
@@ -11,4 +12,19 @@
   </form>
   <hr>
   <a href="{% url 'movies:index' %}">[back]</a>
+=======
+<!-- create.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>CREATE</h1>
+  <form action="{% url 'movies:create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+  <hr>
+  <a href="{% url 'movies:index' %}">[back]</a>
+>>>>>>> 839d8730f0ca103e47c95ab8477c42cb69f4f5e6
 {% endblock %}

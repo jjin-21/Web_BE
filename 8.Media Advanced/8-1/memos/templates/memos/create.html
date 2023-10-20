@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 
 {% block content %}
@@ -12,3 +13,19 @@
 {% endblock  %}
 
 
+=======
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>CREATE</h1>
+  <form action="{% url 'memos:create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+  <hr>
+  <a href="{% url 'memos:index' %}">[back]</a>
+{% endblock  %}
+
+
+>>>>>>> 839d8730f0ca103e47c95ab8477c42cb69f4f5e6
