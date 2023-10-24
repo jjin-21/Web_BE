@@ -34,3 +34,9 @@ def signup(request):
         if form.is_valid():
             form.save()
             return redirect('accounts:login')
+    else:
+        form = CustomUserCreationForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/signup.html', context)
